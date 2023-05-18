@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="style.css">
+        <!-- <script src="./app.js" defer="true"></script> -->
+
+        <script
+            src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+        <script src="jquery.js" defer="true"></script>
+        <script src="firebase.js" type="module" defer="true"></script>
+        <title>modal</title>
+    </head>
+    <body>
+        <div id="btn">
+            <button class="button" style="vertical-align:middle"><span> Add user
+                </span></button>
+        </div>
+
+
+        <div class="modal">
+            <div class="contentBox">
+                <div class="close"></div>
+                <div class="content">
+                    <div class="wrapper fadeInDown">
+                        <div id="formContent">
+                            <form id="addUser">
+                                <input type="text" id="name" class="fadeIn
+                                    second" name="name" placeholder="Name">
+                                <input type="text" id="address" class="fadeIn
+                                    third" name="address" placeholder="Address">
+                                <input type="submit" class="fadeIn fourth"
+                                    value="Submit">
+                            </form>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="show">
+
+            <h2>All User</h2>
+
+            <table>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>action</th>
+                </tr>
+            </table>
+
+        </div>
+
+
+
+
+    </body>
+</html>
