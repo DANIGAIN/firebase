@@ -48,15 +48,13 @@ async function Remove()
 }
 async function  UpdateDate()
 {
-    var token = await response.user.getIdToken();
-    console.log('TokenID', token);
       await updateDoc( doc(db, "user", "SF"), {
            "name": "dani",
           });
 
 
 }
-UpdateDate();
+// UpdateDate();
 
 
 //--------------------------   read   -----------------------------------//
@@ -83,7 +81,9 @@ async function  user(db)
 
    
     
-
+function remove() { 
+    console.log("jashfd");
+ }
 
 
 // ------------------------------EventListener  -----------------------------------//
