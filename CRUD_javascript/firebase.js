@@ -16,20 +16,41 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
+let userCal = [];
 
 
-//------------------------------  function ----------------------------------------//
+  //------------------------------  function  ----------------------------------------//
+
+
+async function  user(db)
+    {
+        const userSanpshot  = await getDocs(collection(db,'user'));
+        return userSanpshot.docs;
+    }
+  
+    user(db) 
+    .then(function(data)
+    {
+        data.forEach(function(document)
+        {
+            let  user =  {
+                docID :  document.id ,
+                ...document.data()
+            }; 
+            userCal.unshift(user);
+        })
+
+        
+    });
+
 
 async function InsertData(event)
 {
-
-    const userRef  = collection(db, 'user');
     event.preventDefault()
     let nam = event.target[name='name'].value;
     let adderss = event.target[name='address'].value;
-    await setDoc(doc(userRef),
+    await setDoc(doc(collection(db , 'user')),
     {
-
         name : nam,
         adderss : adderss,
     })
@@ -39,6 +60,41 @@ async function InsertData(event)
     $('#btn').show();
 
     
+}
+
+
+async function show()
+{
+  
+    
+    var people = [
+        {
+          docID: 'UykxJdxddoregEoaVTE2',
+          name: 'Dani Gain',
+          address: 'khulna'
+        },
+        {
+          docID: 'HIrByhR8qB45i72aBj3y',
+          name: 'Dani Gain',
+          address: 'khulna'
+        }
+      ];
+
+
+    
+    console.log(userCal);
+    console.log(people);
+    
+    
+  
+}
+
+await show();
+
+
+async function showUser()
+{
+
 }
 
 async function Remove()
@@ -54,36 +110,6 @@ async function  UpdateDate()
 
 
 }
-// UpdateDate();
-
-
-//--------------------------   read   -----------------------------------//
-async function  user(db)
-    {
-        const userSanpshot  = await getDocs(collection(db,'user'));
-    
-        const dataList = userSanpshot.docs.map(doc => doc.data());
-        return dataList;
-    }
-  
-    user(db) 
-    .then(function(data)
-    {
-        data.forEach(function(value ,ind)
-        {
-            
-            const tr = $(`<tr><td>${value.name}</td> <td>${value.adderss}</td> <td> X </td> </tr>`)
-            $('table').append(tr);
-        })
-
-        
-    })
-
-   
-    
-function remove() { 
-    console.log("jashfd");
- }
 
 
 // ------------------------------EventListener  -----------------------------------//
